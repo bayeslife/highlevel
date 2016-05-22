@@ -1,0 +1,80 @@
+'use strict';
+
+angular.module('highlevelApp')
+  .factory('D3Editor', function D3Editor($rootScope) {
+  
+    // Public API here
+    return {
+
+     render: function(absUrl,nodes,links,$scope) {            
+            var colors = d3.scale.category10();
+            
+            var svg = d3.select('#editor')
+
+          svg.on('mousedown', mousedown)
+             .on('mousemove', mousemove)
+            .on('mouseup', mouseup);
+
+          // init D3 force layout
+          var force = d3.layout.force()
+          .nodes(nodes)
+          .links(links)          
+          .linkDistance(linkDistance)
+          .linkStrength(0.5)
+          .charge(-200)
+          .on('tick', function(){
+              $scope.$apply();
+
+              for(var i=0;i<nodes.length;i++){
+                var n = nodes[i];
+                n.fillColor = (n === selected_node) ? d3.rgb(colors(n.color)).brighter().toString() : colors(n.color);                 
+              }        
+          })
+          .start();
+
+          function linkDistance(link,index){
+              return 100 + $scope.getCorrelation(link,index)*-40;
+          }
+
+           // mouse event vars
+          var selected_node = null,
+          selected_link = null,
+          mousedown_link = null,
+          mousedown_node = null,
+          mouseup_node = null;
+
+          function mousedown() {
+            // prevent I-bar on drag
+            //d3.event.preventDefault();
+        
+              // because :active only works in WebKit?
+              //svg.classed('active', true);
+
+              if(d3.event.ctrlKey || mousedown_node || mousedown_link) return;
+
+              // insert new node at point
+              var point = d3.mouse(this);
+              
+              $scope.addNode(function(node){
+                //node = {_id: ++lastNodeId, name: 'new', color: 4, reflexive: false};
+                node.x = point[0];
+                node.y = point[1];
+                node.nodeIndex = nodes.length;
+                nodes.push(node);
+                //restart();  
+              })        
+            
+          }
+
+          function mouseup() {
+            
+          }
+
+          function mousemove() {
+            
+          }
+      }
+  };
+
+
+});

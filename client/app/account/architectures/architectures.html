@@ -1,0 +1,156 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<link rel="stylesheet" href="app/account/architectures/architecture.css">
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12" ng-show="!architectureEdit">
+          <h3>{{architecture.name}}</h3>
+        </div>
+        <div class="col-sm-12" ng-show="architectureEdit">
+          <input type="text" ng-model="architecture.name"></input>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8" ng-show="!architectureEdit">
+          {{architecture.description}}
+        </div>
+        <div class="col-sm-8" ng-show="architectureEdit">
+          <textarea type="text" columns="300" rows="5" ng-model="architecture.description"></textarea>
+        </div>
+        <div class="col-sm-4">
+            <a href="#" ng-show="!architectureEdit" ng-click="toggleEdit()">Edit</a>
+            <a href="#" ng-show="architectureEdit" ng-click="saveArchitecture()">Save</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8" > 
+            <select ng-model="type">
+                <option value="category">Category</option>
+                <option value="choice">Choice</option>
+                <option value="capability">Capability</option>
+                <option value="outcome">Outcome</option>          
+            </select>
+            <input type="text" ng-model="nodename"></input>                
+            <svg id="editor" width="100%" height="400" style="background: #FFF">
+                <defs>
+                    <!-- define arrow markers for graph links -->
+                        <marker id="end-arrow" viewBox="0 -5 10 10" refX="6" markerWidth="3" markerHeight="3" orient="auto">
+                            <path d="M0,-5L10,0L0,5" fill="#000"/></path>
+                        </marker>
+                        <marker id="start-arrow" viewBox="0 -5 10 10" refX="4" markerWidth="3" markerHeight="3" orient="auto">
+                            <path d="M10,-5L0,0L10,5" fill="#000"/></path>
+                        </marker>    
+                     </defs>
+            </svg>
+        </div>    
+    <!-- <div class="col-sm-12">
+        <svg id="editor" ng-attr-width="{{width}}"
+                 ng-attr-height="{{height}}">
+                 <defs>
+                    <marker id="end-arrow" viewBox="0 -5 10 10" refX="6" markerWidth="3" markerHeight="3" orient="auto">
+                        <path d="M0,-5L10,0L0,5" fill="#000"/></path>
+                    </marker>
+                    <marker id="start-arrow" viewBox="0 -5 10 10" refX="4" markerWidth="3" markerHeight="3" orient="auto">
+                        <path d="M10,-5L0,0L10,5" fill="#000"/></path>
+                    </marker>    
+                 </defs>
+                <line   ng-repeat="link in links"
+                        class="link"
+                        ng-attr-stroke-width="{{link.strokeWidth}}"
+                        ng-attr-x1="{{link.source.x}}"
+                        ng-attr-y1="{{link.source.y}}"
+                        ng-attr-x2="{{link.target.x}}"
+                        ng-attr-y2="{{link.target.y}}">
+                </line>
+
+                <circle ng-repeat="node in nodes"
+                        class="node"
+                        r="20"
+                        ng-attr-class="{{node.reflexive}}"
+                        ng-attr-fill="{{node.fillColor}}"
+                        ng-attr-cx="{{node.x}}"
+                        ng-attr-cy="{{node.y}}"
+                        ng-attr-transform="{{centerTransform}}"  >
+                    <title>{{node.name}}</title>
+
+                </circle>
+
+            </svg>
+    </div> -->  
+        <div class="col-sm-4">
+            <table class="table">
+                <tr>
+                    <td>Type</td>
+                    <td>{{selectedNode.type}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        <input type="text" ng-model="selectedNode.name"></input>
+                    </td>                
+                </tr>
+                <tr ng-show="selectedNode.probabilityNode">
+                    <td>
+                        Probability
+                    </td>
+                    <td>
+                        <input type="text" columns="3" ng-model="selectedNode.probability"></input>
+                    </td>                
+                </tr>
+            </table>
+            <table class="table" ng-show="selectedNode.probabilityNode">
+                <!-- <tr ng-if="totalprobabilitynot1">
+                    <td class="validationError">Error
+                    </td>
+                    <td class="validationError">
+                        Probabilities should add to 1.
+                    </td>
+                </tr>   -->           
+                <tr ng-repeat="combination in selectedNode.combinations">              
+                    <td>
+                        {{combination.jointName}}
+                        <br/>
+                        {{combination.probability}}
+                    </td>                                
+                    <td>
+                        {{combination.likelihood.name}}                    
+                        <br/>
+                        <input type="text" columns="3" ng-model="combination.likelihood.value"></input>
+                    </td>
+                    <td>
+                        {{combination.prior.name}}
+                        <br/>
+                        {{combination.prior.value}}
+                    </td>
+                </tr>
+            </table>
+
+            <div ng-if="selectedNode.type=='Outcome'">
+                
+            </div>
+            <div ng-if="selectedNode.type=='Capability'">
+                
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+              <table class="table">                
+                <tr ng-repeat="outcome in getOutcomes()">              
+                    <td>
+                        {{outcome.name}}
+                    </td>
+                    <td>                        
+                        {{outcome.probability}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+  </div>
+</div>

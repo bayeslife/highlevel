@@ -1,0 +1,136 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class=" container">
+    <h3>What is a software architecture?</h3>
+
+    <div class="row">
+      <div class="col-sm-2">
+        Each Business has desired Outcomes.
+
+        <a class="assist" href="#" data-toggle="tooltip" title="The Outcomes generally are preferred locations on a scale between -1 and 1 of a variable."><span class="glyphicon glyphicon-info-sign"></span></a>
+
+      </div>
+      <div class="col-sm-2">
+        An Architecture begins with a unique technology Choice from each of a set of Mutually Exclusive<a class="assist" href="#" data-toggle="tooltip" title="The Choice are mutually exclusive because the commitment to the Choice means other choices are not pursued."><span class="glyphicon glyphicon-info-sign"></span></a> Choices. 
+      </div>
+      <div class="col-sm-2">
+        The Choices can be related to Capabilities that will result from the Choice.  
+      </div>
+      <div class="col-sm-2">  
+      The relationships are debatable and part of the Architecture.
+      <a class="assist" href="#" data-toggle="tooltip" title="The relation expresses both a causation effect and uncertainty."><span class="glyphicon glyphicon-info-sign"></span></a>
+      </div>
+      <div class="col-sm-2">    
+      The Capabalities which result will also conditionally relate with various Outcomes. 
+      <a class="assist" href="#" data-toggle="tooltip" title="This may be indirect through influences on other Capabilities."><span class="glyphicon glyphicon-info-sign"></span></a>
+      </div>
+      <div class="col-sm-2">
+      Measurements can be taken which provide supporting evidence for particular Outcomes and Capabilities.  
+      <a class="assist" href="#" data-toggle="tooltip" title="The Measurements can be used to identify if the Outcomes are being achieved."><span class="glyphicon glyphicon-info-sign"></span></a>
+      </div>
+    </div>
+    <div class="row">
+    <img src="assets/images/MetaModel.png" width="70%"/>
+    </div>
+  </div>
+</header>
+
+<header class="hero-unit2" id="banner">
+<div class="container">
+  <h3>To develop a software architecture</h3>
+  <div class="row">
+      <div class="col-sm-2">
+        Identity your business Outcomes.
+      </div>
+      <div class="col-sm-2">
+        Identify the Choices.
+      </div>
+      <div class="col-sm-2">
+        Identity your business Capabilities        
+      </div>    
+      <div class="col-sm-2">  
+      Identity relationships between Choices and Capabilities and Outcomes.
+      <a class="assist" href="#" data-toggle="tooltip" title="What things influence other things"><span class="glyphicon glyphicon-info-sign"></span></a>      
+      </div>
+      <div class="col-sm-2">    
+      Specify the conditional probability for each relationship.
+      <a class="assist" href="#" data-toggle="tooltip" title="What is the probability of the target given each source combination"><span class="glyphicon glyphicon-info-sign"></span></a>
+      </div>
+      <div class="col-sm-2">
+      Review the Outcomes to see the likelihood of the Outcomes. 
+      <a class="assist" href="#" data-toggle="tooltip" title="Compare various choices to see the effect on the Outcomes."><span class="glyphicon glyphicon-info-sign"></span></a>
+      </div>
+    </div>
+</div>
+</header>
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Choice Categories:</h1>
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="category in categories">
+        <li><a href="/categories/{{category._id}}" tooltip="{{category.info}}">{{category.name}}<button type="button" class="close" ng-click="deleteCategory(category)">&times;</button></a></li>
+      </ul>
+      </div>
+      <div class="col-lg-12"> 
+      <form class="category-form">        
+        <p class="input-group">
+        <input type="text" class="form-control" placeholder="Add a new category here." ng-model="newCategory">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-primary" ng-click="addCategory()">Add New</button>
+        </span>
+      </p>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Architecture:</h1>
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="architecture in architectures">
+        <li><a href="/architectures/{{architecture._id}}" class="selectable" tooltip="{{architecture.info}}">{{architecture.name}}</a>
+        <button type="button" class="close" ng-click="deleteArchitecture(architecture)">&times;</button></li>
+      </ul>
+      </div>
+      <div class="col-lg-12"> 
+      <form class="architecture-form">        
+        <p class="input-group">
+        <input type="text" class="form-control" placeholder="Add a new architecture here." ng-model="newArchitecture">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-primary" ng-click="addArchitecture()">Add New</button>
+        </span>
+      </p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Outcomes:</h1>
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="outcome in outcomes">
+        <li><a href="/outcomes/{{outcome._id}}" tooltip="{{outcome.info}}">{{outcome.name}}<button type="button" class="close" ng-click="deleteOutcome(outcome)">&times;</button></a></li>
+      </ul>
+      </div>
+      <div class="col-lg-12"> 
+      <form class="outcome-form">
+        <p class="input-group">
+        <input type="text" class="form-control" placeholder="Add a new outcome here." ng-model="newOutcome">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-primary" ng-click="addOutcome()">Add New</button>
+        </span>
+      </p>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+<footer class="footer">
+  <div class="container">
+      <p>High Level: An Ongoing project</p>        
+  </div>
+</footer>

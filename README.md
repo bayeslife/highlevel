@@ -14,5 +14,5 @@ This application is running at: http://highlevel.xceptionale.com/
 
 There is more detail on this application at http://xceptionale.com
 
-Inline-style: ![alt text](http://xceptionale.com/assets/images/9544596d.highlevel.png "Logo Title Text 1")
+![alt text](http://xceptionale.com/assets/images/9544596d.highlevel.png "Preview")
 
